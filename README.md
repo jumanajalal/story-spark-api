@@ -1,103 +1,78 @@
-🌙 Story Weaver
+# Story Weaver ✨
 
-Story Weaver is a React + Vite application that lets you generate, continue, and save AI-powered stories across different genres.
-It’s styled with Tailwind CSS and shadcn/ui, and powered by a backend API deployed on Render.
+Story Weaver is a creative platform where you can generate unique AI-powered story prompts, continue epic narratives, and build your personal library of tales.  
 
-👉 Live API URL: https://story-spark-api-3.onrender.com
+🚀 Live API: [https://story-spark-api-3.onrender.com/](https://story-spark-api-3.onrender.com/)  
 
-🚀 Features
+---
 
-Generate creative story prompts with AI
+## **📖 Project Info**
 
-Continue stories dynamically
+- **Front-end:** React + Vite + TypeScript  
+- **UI Components:** shadcn/ui + Tailwind CSS  
+- **Back-end:** FastAPI (deployed on Render)  
 
-Save and view your personal story library
+---
 
-Simple, mystical UI with a magical theme
+## **⚡ Getting Started**
 
-🛠️ Tech Stack
+You can edit this project in multiple ways:  
 
-Vite (bundler)
+### **1. Use your local IDE**
+Make sure you have **Node.js** & **npm** installed (install with `nvm` if needed).  
 
-React + TypeScript
-
-Tailwind CSS (styling)
-
-shadcn/ui (components)
-
-Backend API: FastAPI on Render
-
-📦 Getting Started
-Prerequisites
-
-Node.js (v18+ recommended)
-
-npm
-
-Installation
-
-Clone the repository
-
+```bash
+# Step 1: Clone the repository
 git clone <YOUR_GIT_URL>
+
+# Step 2: Go into the project directory
 cd <YOUR_PROJECT_NAME>
 
-
-Install dependencies
-
+# Step 3: Install dependencies
 npm install
 
-
-Run the development server
-
+# Step 4: Run the development server
 npm run dev
+```
 
+### **2. Edit directly in GitHub**
 
-Open http://localhost:5173 in your browser.
+Navigate to the desired file.
 
-🌐 API Configuration
+Click the pencil ✏️ icon to edit.
 
-The frontend talks to the backend API using an environment variable.
+Commit your changes.
 
-Create a .env file in the root of your project:
+### **3. Use GitHub Codespaces**
 
-VITE_API_URL=https://story-spark-api-3.onrender.com
+Click the green Code button in your repo.
 
+Open a new Codespace.
 
-In your React code, access it with:
+Edit and push changes directly from your browser.
 
-const API_URL = import.meta.env.VITE_API_URL;
-fetch(`${API_URL}/story`);
+### **🌍 Deployment**
 
-🚢 Deployment
+Hosted on Render at https://story-spark-api-3.onrender.com/.
 
-You can deploy the frontend to any static hosting provider:
+### **🛠 Tech Stack**
 
-GitHub Pages
+Vite
 
-Render (Static Site)
+React (TypeScript)
 
-Vercel / Netlify
+shadcn-ui
 
-For example, with Render:
+Tailwind CSS
 
-Connect your GitHub repo.
+FastAPI (Python)
 
-Choose "Static Site" deployment.
-
-Build Command: npm run build
-
-Publish Directory: dist
-
-Add environment variable: VITE_API_URL=https://story-spark-api-3.onrender.com
-
-🌍 Custom Domain
-
-To connect a custom domain (e.g. storyweaver.com), set it up in your hosting provider’s settings.
-
-👩‍💻 Contributors
+### **👩‍💻 Contributors**
 
 @jumanajalal
 
 @lovable-dev[bot]
 
-✨ Where stories come to life. Built with passion for storytellers.
+### **⭐ Show Your Support**
+
+If you like this project, please ⭐ the repo and share it with fellow storytellers!
