@@ -40,23 +40,36 @@ const Index = () => {
     setActiveTab("library");
   };
 
-  const handleContinueStory = (storyId: number) => {
-    const continuation = CONTINUATIONS[Math.floor(Math.random() * CONTINUATIONS.length)];
-    
-    setStories(prev => prev.map(story => {
-      if (story.id === storyId) {
-        return {
-          ...story,
-          continuations: [...(story.continuations || []), continuation]
-        };
-      }
-      return story;
-    }));
+  const handleContinueStory = async (storyId: number) => {
+    try {
+      const response = await fetch(`https://story-spark-api-2.onrender.com/continue/${storyId}`);
+      const data = await response.json();
 
-    toast({
-      title: "Story Continued!",
-      description: "A new chapter has been added to your tale.",
-    });
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setStories(prev => prev.map(story => {
+        if (story.id === storyId) {
+          return {
+            ...story,
+            continuations: [...(story.continuations || []), data.next_part]
+          };
+        }
+        return story;
+      }));
+
+      toast({
+        title: "Story Continued!",
+        description: "A new chapter has been added to your tale.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to continue story. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (

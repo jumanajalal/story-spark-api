@@ -155,37 +155,45 @@ export function StoryGenerator({ onStoryGenerated }: StoryGeneratorProps) {
 
     setIsGenerating(true);
 
-    // Simulate API delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const params = new URLSearchParams({
+        genre,
+        character: character || 'traveler',
+        ...(customSetting && { setting: customSetting })
+      });
 
-    const genreKey = genre as keyof typeof CHARACTERS;
-    const availableCharacters = CHARACTERS[genreKey] || ["traveler"];
-    const availableSettings = SETTINGS[genreKey] || ["mysterious place"];
-    const availableHooks = PLOT_HOOKS[genreKey] || ["where adventure awaits"];
+      const response = await fetch(`https://story-spark-api-2.onrender.com/story?${params}`);
+      const data = await response.json();
 
-    const selectedCharacter = character || availableCharacters[Math.floor(Math.random() * availableCharacters.length)];
-    const selectedSetting = customSetting || availableSettings[Math.floor(Math.random() * availableSettings.length)];
-    const selectedHook = availableHooks[Math.floor(Math.random() * availableHooks.length)];
+      if (data.error) {
+        throw new Error(data.error);
+      }
 
-    const prompt = `A ${selectedCharacter} enters ${selectedSetting} ${selectedHook}. What destiny awaits?`;
+      const newStory: Story = {
+        id: data.story_id,
+        genre: data.genre,
+        character: data.character,
+        setting: data.setting,
+        prompt: data.prompt,
+        continuations: [],
+        createdAt: new Date()
+      };
 
-    const newStory: Story = {
-      id: Date.now(),
-      genre,
-      character: selectedCharacter,
-      setting: selectedSetting,
-      prompt,
-      continuations: [],
-      createdAt: new Date()
-    };
-
-    onStoryGenerated(newStory);
-    setIsGenerating(false);
-
-    toast({
-      title: "Story Generated!",
-      description: "Your new story prompt is ready.",
-    });
+      onStoryGenerated(newStory);
+      
+      toast({
+        title: "Story Generated!",
+        description: "Your new story prompt is ready.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to generate story. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
