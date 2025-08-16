@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+🌙 Story Weaver
 
-## Project info
+Story Weaver is a React + Vite application that lets you generate, continue, and save AI-powered stories across different genres.
+It’s styled with Tailwind CSS and shadcn/ui, and powered by a backend API deployed on Render.
 
-**URL**: https://lovable.dev/projects/f02644a5-df66-4c27-95a6-0a15af535855
+👉 Live API URL: https://story-spark-api-3.onrender.com
 
-## How can I edit this code?
+🚀 Features
 
-There are several ways of editing your application.
+Generate creative story prompts with AI
 
-**Use Lovable**
+Continue stories dynamically
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f02644a5-df66-4c27-95a6-0a15af535855) and start prompting.
+Save and view your personal story library
 
-Changes made via Lovable will be committed automatically to this repo.
+Simple, mystical UI with a magical theme
 
-**Use your preferred IDE**
+🛠️ Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Vite (bundler)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+React + TypeScript
 
-Follow these steps:
+Tailwind CSS (styling)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+shadcn/ui (components)
+
+Backend API: FastAPI on Render
+
+📦 Getting Started
+Prerequisites
+
+Node.js (v18+ recommended)
+
+npm
+
+Installation
+
+Clone the repository
+
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Install dependencies
+
+npm install
+
+
+Run the development server
+
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Open http://localhost:5173 in your browser.
 
-**Use GitHub Codespaces**
+🌐 API Configuration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The frontend talks to the backend API using an environment variable.
 
-## What technologies are used for this project?
+Create a .env file in the root of your project:
 
-This project is built with:
+VITE_API_URL=https://story-spark-api-3.onrender.com
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
 
-## How can I deploy this project?
+In your React code, access it with:
 
-Simply open [Lovable](https://lovable.dev/projects/f02644a5-df66-4c27-95a6-0a15af535855) and click on Share -> Publish.
+const API_URL = import.meta.env.VITE_API_URL;
+fetch(`${API_URL}/story`);
 
-## Can I connect a custom domain to my Lovable project?
+🚢 Deployment
 
-Yes, you can!
+You can deploy the frontend to any static hosting provider:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+GitHub Pages
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Render (Static Site)
+
+Vercel / Netlify
+
+For example, with Render:
+
+Connect your GitHub repo.
+
+Choose "Static Site" deployment.
+
+Build Command: npm run build
+
+Publish Directory: dist
+
+Add environment variable: VITE_API_URL=https://story-spark-api-3.onrender.com
+
+🌍 Custom Domain
+
+To connect a custom domain (e.g. storyweaver.com), set it up in your hosting provider’s settings.
+
+👩‍💻 Contributors
+
+@jumanajalal
+
+@lovable-dev[bot]
+
+✨ Where stories come to life. Built with passion for storytellers.
